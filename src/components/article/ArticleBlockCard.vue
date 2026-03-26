@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { SlidersHorizontal, X } from 'lucide-vue-next'
 import { onMounted, onUnmounted, ref } from 'vue'
 
 const props = defineProps<{
@@ -59,7 +60,9 @@ onUnmounted(() => {
           :aria-controls="`tune-panel-${blockId}`"
           @click="emit('select', blockId)"
         >
-          {{ selected ? 'Close' : 'Tune' }}
+          <X v-if="selected" :size="14" :stroke-width="2" aria-hidden="true" />
+          <SlidersHorizontal v-else :size="14" :stroke-width="2" aria-hidden="true" />
+          <span class="visually-hidden">{{ selected ? 'Close' : 'Tune' }}</span>
         </button>
 
         <div
@@ -93,7 +96,9 @@ onUnmounted(() => {
             :aria-controls="`tune-panel-${blockId}`"
             @click="emit('select', blockId)"
           >
-            {{ selected ? 'Close' : 'Tune block' }}
+            <X v-if="selected" :size="18" :stroke-width="2" aria-hidden="true" />
+            <SlidersHorizontal v-else :size="18" :stroke-width="2" aria-hidden="true" />
+            <span class="visually-hidden">{{ selected ? 'Close' : 'Tune block' }}</span>
           </button>
 
           <div
@@ -199,22 +204,20 @@ onUnmounted(() => {
 
 .article-block__tune--floating {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: -10px;
   z-index: 40;
 }
-
-.article-block__body--with-tune {
-  padding-right: 4.75rem;
-}
-
 .article-block__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 0;
   border-radius: 999px;
   background: rgba(31, 49, 40, 0.08);
   color: #1f3128;
-  padding: 0.45rem 0.75rem;
-  font-size: 0.82rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
   transition:
     opacity 160ms ease,
     background 160ms ease,
@@ -296,10 +299,6 @@ onUnmounted(() => {
     right: 0;
     left: auto;
     width: min(17.5rem, calc(100vw - 1.5rem));
-  }
-
-  .article-block__body--with-tune {
-    padding-right: 4.25rem;
   }
 }
 </style>
