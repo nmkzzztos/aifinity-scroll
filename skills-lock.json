@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "blog-post": {
+      "source": "langchain-ai/deepagents",
+      "sourceType": "github",
+      "computedHash": "9cc2da2d8b60cfdeacdc51c910fe9363b95ab568c1203201c909c14f10524432"
+    },
+    "vue-best-practices": {
+      "source": "hyf0/vue-skills",
+      "sourceType": "github",
+      "computedHash": "21132f6c11c765bd11d0d6ad081122dd858630073e2123b651e58f17b399b131"
+    }
+  }
+}
